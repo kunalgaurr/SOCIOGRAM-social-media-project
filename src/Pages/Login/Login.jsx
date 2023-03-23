@@ -2,6 +2,10 @@ import React from 'react';
 import './Login.css';
 
 export default function Login() {
+  const handleClick = (e) => {
+    console.log('clicked');
+    e.preventDefault();
+  };
   return (
     <div className="login-container">
       <div className="login-wrapper">
@@ -12,7 +16,7 @@ export default function Login() {
           </span>
         </div>
         <div className="login-right">
-          <div className="login-box">
+          <form className="login-box" onSubmit={handleClick}>
             <input type="email" className="login-input" placeholder="Email" />
             <input
               type="password"
@@ -24,7 +28,7 @@ export default function Login() {
             <button className="login-register-button">
               Create a new account
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

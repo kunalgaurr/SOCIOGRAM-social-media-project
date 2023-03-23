@@ -2,7 +2,7 @@ import './Rightbar.css';
 import { Users } from '../../dummyData';
 import Online from '../Online/Online';
 
-export default function Rightbar({ profile }) {
+export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const HomeRightbar = () => {
@@ -15,11 +15,6 @@ export default function Rightbar({ profile }) {
             today.
           </span>
         </div>
-        <img
-          src="/assets/ads/3.jpg"
-          alt="Cannot show ads"
-          className="rightbar-ad"
-        />
         <h4 className="rightbar-title">Online Friends</h4>
         <ul className="online-friend-list">
           {Users.map((u) => (
@@ -37,15 +32,15 @@ export default function Rightbar({ profile }) {
         <div className="rightbat-info">
           <div className="rightbar-info-item">
             <span className="rightbar-info-key">City:</span>
-            <span className="rightbar-info-value">Dehradun</span>
+            <span className="rightbar-info-value">{user.city}</span>
           </div>
           <div className="rightbar-info-item">
             <span className="rightbar-info-key">From:</span>
-            <span className="rightbar-info-value">Delhi</span>
+            <span className="rightbar-info-value">{user.from}</span>
           </div>
           <div className="rightbar-info-item">
             <span className="rightbar-info-key">Relationship:</span>
-            <span className="rightbar-info-value">Single</span>
+            <span className="rightbar-info-value">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-" }</span>
           </div>
         </div>
         <h4 className="rightbar-title">User Friends</h4>
@@ -105,7 +100,7 @@ export default function Rightbar({ profile }) {
   return (
     <div className="rightbar">
       <div className="rightbar-wrapper">
-        {profile ? <ProfileRightBar /> : <HomeRightbar />}
+        {user ? <ProfileRightBar /> : <HomeRightbar />}
       </div>
     </div>
   );

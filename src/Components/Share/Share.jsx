@@ -1,12 +1,13 @@
 import './Share.css';
 
-export default function Share() {
+export default function Share({ user }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="share-container">
       <div className="share-wrapper">
         <div className="share-top">
           <img
-            src="./assets/person/1.jpg"
+            src={PF + 'person/profile.png'}
             alt=""
             className="share-profile-image"
           />
@@ -25,7 +26,9 @@ export default function Share() {
               <span className="share-option-text">Photo and Video</span>
             </div>
             <div className="share-option">
-              <span className="material-symbols-outlined share-icon">label</span>
+              <span className="material-symbols-outlined share-icon">
+                label
+              </span>
               <span className="share-option-text">Tag</span>
             </div>
             <div className="share-option">
