@@ -9,8 +9,6 @@ import './Feed.css';
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
 
-
-
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -19,7 +17,6 @@ export default function Feed({ username }) {
           : await axios.get('/posts/timeline/6400dd696e9b2b3ed78d950c');
 
         setPosts(res.data);
-        return console.log(res.data);
       } catch (error) {
         console.log(error);
       }

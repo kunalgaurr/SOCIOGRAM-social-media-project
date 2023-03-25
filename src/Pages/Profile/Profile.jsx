@@ -1,19 +1,26 @@
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
-import React from 'react';
 
 import './Profile.css';
+
 import Topbar from '../../Components/Topbar/Topbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import Feed from '../../Components/Feed/Feed';
 import Rightbar from '../../Components/Rightbar/Rightbar';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
   const username = useParams().username;
+
+  // const user = useContext(AuthContext);
+  // const username = user.username;
+
+  console.log(username, 'PAPAPAPPAPAPAPA');
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,7 +30,7 @@ export default function Profile() {
       return console.log(res.data);
     };
     fetchUser();
-  }, []);
+  }, [username]);
 
   return (
     <div>

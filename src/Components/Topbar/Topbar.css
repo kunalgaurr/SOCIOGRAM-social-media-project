@@ -85,3 +85,17 @@
   object-fit: cover;
   cursor: pointer;
 }
+@media (max-width: 400px) {
+  .topbar-container {
+    justify-content: space-around;
+  }
+  .logo {
+    display: none;
+  }
+  .topbar-center {
+    flex: 3;
+  }
+  .topbar-link {
+    display: none;
+  }
+}

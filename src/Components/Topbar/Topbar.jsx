@@ -1,7 +1,14 @@
-import './Topbar.css';
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import './Topbar.css';
+
 export default function Topbar() {
+  const user = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  console.log(user);
   return (
     <div className="topbar-container">
       <div className="topbar-left">
@@ -21,7 +28,9 @@ export default function Topbar() {
       </div>
       <div className="topbar-right">
         <div className="topbar-links">
-          <span className="topbar-link">Homepage</span>
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            <span className="topbar-link">Homepage</span>
+          </Link>
           <span className="topbar-link">Timeline</span>
         </div>
         <div className="topbar-icon">
@@ -38,7 +47,17 @@ export default function Topbar() {
             <span className="topbar-icon-badge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpg" alt="" className="topbar-image" />
+        <Link to={`/profile/${user.username}`}>
+          <img
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + 'person/profile.png'
+            }
+            alt=""
+            className="topbar-image"
+          />
+        </Link>
       </div>
     </div>
   );

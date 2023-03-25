@@ -56,3 +56,13 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.footer-text {
+  color: grey;
+  font-size: 0.8rem;
+  margin: 0 20px;
+}
+@media (max-width: 400px) {
+  .rightbar {
+    display: none;
+  }
+}

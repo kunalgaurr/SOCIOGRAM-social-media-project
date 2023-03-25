@@ -40,7 +40,13 @@ export default function Rightbar({ user }) {
           </div>
           <div className="rightbar-info-item">
             <span className="rightbar-info-key">Relationship:</span>
-            <span className="rightbar-info-value">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-" }</span>
+            <span className="rightbar-info-value">
+              {user.relationship === 1
+                ? 'Single'
+                : user.relationship === 2
+                ? 'Married'
+                : '-'}
+            </span>
           </div>
         </div>
         <h4 className="rightbar-title">User Friends</h4>
@@ -102,6 +108,14 @@ export default function Rightbar({ user }) {
       <div className="rightbar-wrapper">
         {user ? <ProfileRightBar /> : <HomeRightbar />}
       </div>
+      <span className="footer-text">Terms of services</span>
+      <span className="footer-text">Privacy Policy</span>
+      <span className="footer-text">Cookie Policy</span>
+      <span className="footer-text">Accessibility</span>
+      <span className="footer-text">Ads info</span>
+      <span className="footer-text">More</span>
+      <p className="footer-text">A website by Kunal Gaur</p>
+      <p className="footer-text">&copy; 2023 Sociogram, Inc</p>
     </div>
   );
 }

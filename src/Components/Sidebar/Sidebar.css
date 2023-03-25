@@ -11,12 +11,12 @@
 }
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1;
+  width: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: grey;
 }
 .sidebar-wrapper {
-  overflow-y: scroll;
   padding: 20px;
 }
 .sidebar-list {
@@ -42,4 +42,9 @@
 }
 .sidebar-hr {
   margin: 20px 0;
+}
+@media (max-width: 400px) {
+  .sidebar {
+    display: none;
+  }
 }

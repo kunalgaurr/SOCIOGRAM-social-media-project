@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
+import { loginCall } from '../../apiCalls';
+
 import './Login.css';
 
 export default function Login() {
+  const email = useRef();
+  const password = useRef();
+
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+
   const handleClick = (e) => {
-    console.log('clicked');
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
     e.preventDefault();
   };
+
+  console.log(user);
+  console.log(isFetching);
   return (
     <div className="login-container">
       <div className="login-wrapper">
@@ -17,16 +32,29 @@ export default function Login() {
         </div>
         <div className="login-right">
           <form className="login-box" onSubmit={handleClick}>
-            <input type="email" className="login-input" placeholder="Email" />
+            <input
+              type="email"
+              className="login-input"
+              placeholder="Email"
+              ref={email}
+              disabled={isFetching}
+              required
+            />
             <input
               type="password"
               className="login-input"
               placeholder="Password"
+              minLength="6"
+              ref={password}
+              disabled={isFetching}
+              required
             />
-            <button className="login-button">Log In</button>
+            <button className="login-button" disabled={isFetching}>
+              {isFetching ? 'Loading...' : 'Log In'}
+            </button>
             <span className="login-forgot">Forgot Password?</span>
             <button className="login-register-button">
-              Create a new account
+              {isFetching ? 'Loading...' : 'Create new account'}
             </button>
           </form>
         </div>

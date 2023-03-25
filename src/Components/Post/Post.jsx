@@ -16,7 +16,6 @@ export default function Post({ post }) {
       const res = await axios.get(`/users?userId=${post.userId}`);
 
       setUser(res.data);
-      return console.log(res.data, 'HELLLLLLOOOOOOOOOOOOOOOOO');
     };
     fetchUser();
   }, [post.userId]);
